@@ -50,7 +50,7 @@ class BooksApp extends React.Component {
 
   onBookshelfChange = (book, shelf) => {
     BooksAPI.update(book, shelf)
-      .then(this.getSelectedBooks())
+      .then(this.getSelectedBooks)
       .catch(err => {
         console.warn(err);
       });
