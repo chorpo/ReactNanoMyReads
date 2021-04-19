@@ -54,8 +54,6 @@ class BooksApp extends React.Component {
       .catch(err => {
         console.warn(err);
       });
-
-    this.getSelectedBooks();
   };
 
   onBookSearch = debounce(query => {
@@ -70,25 +68,18 @@ class BooksApp extends React.Component {
     const { selectedBooks, searchedBooks } = this.state;
     return (
       <div className="app">
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <BooksList selectedBooks={selectedBooks} onBookshelfChange={this.onBookshelfChange} />
-          )}
-        />
-        <Route
-          path="/search"
-          render={() => (
-            <SearchBooks
-              searchedBooks={searchedBooks}
-              selectedBooks={selectedBooks}
-              onBookshelfChange={this.onBookshelfChange}
-              onBookSearch={this.onBookSearch}
-              onResetSearch={this.onResetSearch}
-            />
-          )}
-        />
+        <Route exact path="/">
+          <BooksList selectedBooks={selectedBooks} onBookshelfChange={this.onBookshelfChange} />
+        </Route>
+        <Route path="/search">
+          <SearchBooks
+            searchedBooks={searchedBooks}
+            selectedBooks={selectedBooks}
+            onBookshelfChange={this.onBookshelfChange}
+            onBookSearch={this.onBookSearch}
+            onResetSearch={this.onResetSearch}
+          />
+        </Route>
       </div>
     );
   }
