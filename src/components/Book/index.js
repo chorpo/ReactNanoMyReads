@@ -10,7 +10,9 @@ const Book = ({ book, shelf, onBookshelfChange }) => (
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${book.imageLinks.thumbnail})`
+            backgroundImage: `url(${book.imageLinks &&
+              book.imageLinks.thumbnail &&
+              book.imageLinks.thumbnail})`
           }}
         />
         <BookshelfChanger
@@ -21,14 +23,16 @@ const Book = ({ book, shelf, onBookshelfChange }) => (
         />
       </div>
       <div className="book-title">{book.title}</div>
-      <div className="book-authors">
-        {book.authors.map(author => (
-          <React.Fragment key={author}>
-            {author}
-            <br />
-          </React.Fragment>
-        ))}
-      </div>
+      {book.authors && (
+        <div className="book-authors">
+          {book.authors.map(author => (
+            <React.Fragment key={author}>
+              {author}
+              <br />
+            </React.Fragment>
+          ))}
+        </div>
+      )}
     </div>
   </li>
 );

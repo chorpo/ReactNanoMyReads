@@ -4,11 +4,21 @@ import SearchResults from '../SearchResults';
 
 class SearchBooks extends Component {
   render() {
-
+    const {
+      searchedBooks,
+      selectedBooks,
+      onBookshelfChange,
+      onBookSearch,
+      onResetSearch
+    } = this.props;
     return (
       <div className="search-books">
-        <SearchBar />
-        <SearchResults />
+        <SearchBar onBookSearch={onBookSearch} onResetSearch={onResetSearch} />
+        <SearchResults
+          searchedBooks={searchedBooks}
+          selectedBooks={selectedBooks}
+          onBookshelfChange={onBookshelfChange}
+        />
       </div>
     );
   }
