@@ -17,10 +17,8 @@ class SearchBar extends Component {
     const { onResetSearch } = this.props;
     return (
       <div className="search-books-bar">
-        <Link to="/">
-          <button className="close-search" onClick={onResetSearch}>
-            Close
-          </button>
+        <Link to="/" className="close-search" onClick={onResetSearch}>
+          Close
         </Link>
         <div className="search-books-input-wrapper">
           <input
